@@ -476,20 +476,7 @@ function setAtmosphere(step) {
   if (bv && photosReady['breathe-video']) { if (want === 'breathe-video') bv.play().catch(() => {}); else bv.pause(); }
 }
 
-function speak(text) {
-  if (!S.voice || !('speechSynthesis' in window)) return;
-  try {
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text.replace(/[“”"]/g, ''));
-    const code = lang === 'ta' ? 'ta' : 'en';
-    const v = speechSynthesis.getVoices().find((vv) => vv.lang && vv.lang.toLowerCase().startsWith(code));
-    if (!v && lang === 'ta') return;
-    if (v) u.voice = v;
-    u.lang = lang === 'ta' ? 'ta-IN' : 'en-IN'; u.rate = 0.88; u.pitch = 0.95;
-    speechSynthesis.speak(u);
-  } catch (e) {}
-}
-/* Recorded voice: assets/audio/<en|ta>/<id>.mp3. Falls back to the phone's own voice if a clip is missing. */
+/* Recorded voice only: assets/audio/<en|ta>/<id>.mp3. If a clip is missing, SOS simply stays silent. */
 const clips = {};
 let playing = null;
 function clip(id) {
@@ -505,14 +492,13 @@ function clip(id) {
 function voice(id, fallback) {
   if (!S.voice) return;
   const c = clip(id);
-  try { speechSynthesis.cancel(); } catch (e) {}
   if (playing && playing !== c.a) playing.pause();
-  if (c.ok === false) { speak(fallback); return; }
+  if (c.ok === false) return;
   playing = c.a;
   try { c.a.currentTime = 0; } catch (e) {}
-  c.a.play().then(() => { c.ok = true; }).catch(() => { c.ok = false; speak(fallback); });
+  c.a.play().then(() => { c.ok = true; }).catch(() => { c.ok = false; });
 }
-function stopVoice() { try { speechSynthesis.cancel(); } catch (e) {} playing?.pause(); }
+function stopVoice() { playing?.pause(); }
 function speakScene(step) {
   const x = t();
   const map = { stop: `${x.s1} ${x.s1say}`, away: `${x.s2} ${x.s2say} ${x.exitLine}`, body: `${x.s3} ${x.s3say}`, breathe: x.s4, write: `${x.s5} ${x.s5say}`, check: x.s6, under: `${x.s7} ${x.s7say}`, done: `${x.done} ${x.doneSay}` };
@@ -592,16 +578,16 @@ function startBreath() {
       cycle(!inhale);
     }, dur);
   };
-  // With voice on, start the circle when the spoken intro ends (recorded clip), or after a fixed pause (phone voice).
+  // With voice on, start the circle when the recorded intro ends; otherwise start right away.
   let started = false;
   const begin = () => { if (started || !orb.isConnected) return; started = true; clearTimeout(breathT); cycle(true); };
   const intro = clips[`${lang}/breathe`];
   if (S.voice && intro && intro.ok !== false && !intro.a.paused) {
     intro.a.addEventListener('ended', () => setTimeout(begin, 400), { once: true });
-    intro.a.addEventListener('error', () => { clearTimeout(breathT); breathT = setTimeout(begin, 5200); }, { once: true });
+    intro.a.addEventListener('error', () => { clearTimeout(breathT); breathT = setTimeout(begin, 700); }, { once: true });
     breathT = setTimeout(begin, 12000);
   }
-  else breathT = setTimeout(begin, S.voice ? 5200 : 700);
+  else breathT = setTimeout(begin, 700);
 }
 function stopBreath() { clearTimeout(breathT); }
 
@@ -709,6 +695,5 @@ Object.entries(PHOTO).forEach(([, k]) => {
   bv.addEventListener('error', () => bv.remove(), { once: true });
   bv.src = BREATHE_VIDEO; bv.load();
 })();
-if ('speechSynthesis' in window) speechSynthesis.getVoices();
 route();
 })();

@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Amaidhi Prototypes</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#EDF1F0">
@@ -414,6 +419,8 @@ body[data-variant="night"] .toast { background: #E7EEF5; color: #0B1220; }
   top: 24px;
 }
 </style>
+</head>
+<body>
 
 <main id="stage" data-enter></main>
 
@@ -887,3 +894,6 @@ setActive((parseInt(new URLSearchParams(location.search).get('v'), 10) || 1) - 1
 requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
 document.fonts?.ready.then(moveHighlight);
 </script>
+
+</body>
+</html>

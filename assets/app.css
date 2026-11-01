@@ -346,6 +346,11 @@ body[data-sos] #embers { z-index: 61; }
   transition: transform 160ms var(--ease-out);
 }
 .hold:active { transform: scale(0.98); }
+.voice-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.voice-chip { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.3); }
+.voice-chip svg { width: 18px; height: 18px; }
+.voice-chip[aria-pressed="true"] { background: var(--water-2); color: #041513; }
+.voice-hint { font-size: 14px; color: var(--mute); }
 .hold .fill {
   position: absolute; inset: 0; border-radius: inherit;
   background: linear-gradient(90deg, var(--ember-deep), var(--ember) 60%, var(--ember-2));

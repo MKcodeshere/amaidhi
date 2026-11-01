@@ -53,7 +53,7 @@ const T = {
     // SOS
     stepOf: (n) => `Step ${n} of 6`,
     s1: 'Stop.', s1say: "Don't say anything. Don't send anything. Stand still and let your hands go loose.",
-    hold: 'Press and hold', holding: 'Keep holding…',
+    hold: 'Press and hold', holding: 'Keep holding…', voiceOn: 'Guide me with voice', voiceHint: 'Use earphones if others are near.',
     s2: 'Step away.', s2say: 'Leave the room, or turn away from the screen. Say this, calmly:',
     exitLine: '“I need ten minutes. I will come back.”', s2btn: "I've stepped away",
     s3: 'Cool your body.', s3say: 'Anger is heat in the body. Pick one and do it now.',
@@ -126,34 +126,34 @@ const T = {
     helpStrong: 'யாரையாவது அல்லது உங்களையே காயப்படுத்தும் நிலையில் இருந்தால், உடனே உதவி பெறுங்கள்.',
     lines: 'இந்தியா · டெலி-மனஸ் 14416 · அவசரம் 112',
     fine: 'அமைதி ஒரு சுய உதவிக் கருவி. இது சிகிச்சையோ அவசர உதவியோ அல்ல. இலவசம், விளம்பரங்கள் இல்லை.',
-    stepOf: (n) => `6-இல் ${n}-ஆம் படி`,
-    s1: 'நில்லுங்கள்.', s1say: 'எதுவும் பேசாதீர்கள். எதையும் அனுப்பாதீர்கள். அசையாமல் நின்று, கைகளைத் தளர விடுங்கள்.',
-    hold: 'அழுத்திப் பிடியுங்கள்', holding: 'பிடித்தபடியே இருங்கள்…',
-    s2: 'விலகுங்கள்.', s2say: 'அறையை விட்டு வெளியே செல்லுங்கள், அல்லது திரையிலிருந்து கண்ணை எடுங்கள். அமைதியாக இதைச் சொல்லுங்கள்:',
-    exitLine: '“எனக்குப் பத்து நிமிடம் வேண்டும். திரும்பி வருவேன்.”', s2btn: 'விலகி வந்துவிட்டேன்',
-    s3: 'உடலைக் குளிர்வியுங்கள்.', s3say: 'கோபம் உடலில் ஏறும் சூடு. ஒன்றைத் தேர்ந்தெடுத்து இப்போதே செய்யுங்கள்.',
+    stepOf: (n) => `6-ல ${n}-வது படி`,
+    s1: 'நில்லுங்க.', s1say: 'இப்போ எதுவும் பேச வேண்டாம். எதுவும் send பண்ண வேண்டாம். அப்படியே நில்லுங்க… கைய loose-ஆ விடுங்க.',
+    hold: 'அழுத்திப் புடிங்க', holding: 'புடிச்சுக்கிட்டே இருங்க…', voiceOn: 'குரல்ல வழிகாட்டு', voiceHint: 'பக்கத்துல யாராவது இருந்தா earphones போட்டுக்குங்க.',
+    s2: 'விலகிப் போங்க.', s2say: 'Room-ஐ விட்டு வெளிய போங்க, இல்லன்னா திரும்பி நில்லுங்க. அமைதியா இப்படிச் சொல்லுங்க:',
+    exitLine: '“எனக்கு ஒரு பத்து நிமிஷம் வேணும். திரும்பி வர்றேன்.”', s2btn: 'விலகி வந்துட்டேன்',
+    s3: 'உடம்பைக் குளிர வையுங்க.', s3say: 'கோபம்னா உடம்புக்குள்ள ஏறுற சூடு. ஏதாவது ஒண்ணு, இப்பவே பண்ணுங்க.',
     tools: [
-      ['drop', 'குளிர்ந்த நீர்', 'முகத்தில் குளிர்ந்த நீரைத் தெளியுங்கள், அல்லது குளிர்ந்த ஒன்றை 30 விநாடிகள் பிடித்திருங்கள்.'],
-      ['fist', 'இறுக்கி, விடுங்கள்', 'ஐந்து விநாடிகள் கைமுஷ்டியை இறுக்குங்கள். விடுங்கள். வித்தியாசத்தை உணருங்கள். மூன்று முறை.'],
-      ['walk', 'நடந்து விடுங்கள்', 'இரண்டு நிமிடம் வேகமாக நடங்கள். உடல் அந்த ஆற்றலை எரிக்கட்டும்.']
+      ['drop', 'ஜில்லுன்னு தண்ணி', 'முகத்துல ஜில்லுன்னு தண்ணி அடிங்க. இல்லன்னா ஜில்லுன்னு ஏதாவது ஒண்ண 30 second கையில புடிச்சுக்குங்க.'],
+      ['fist', 'இறுக்கி, விடுங்க', 'அஞ்சு second கைய இறுக்கமா மடக்குங்க. அப்புறம் விட்டுடுங்க. வித்தியாசத்த feel பண்ணுங்க. மூணு தடவை.'],
+      ['walk', 'வேகமா நடங்க', 'ரெண்டு நிமிஷம் வேகமா நடங்க. அந்த energy-ய உடம்பு எரிச்சுடட்டும்.']
     ],
-    s3btn: 'முடிந்தது. இப்போது மூச்சு',
-    s4: 'வட்டத்தோடு மூச்சு விடுங்கள்.', in: 'மூச்சை உள்ளிழுங்கள்', out: 'மெதுவாக வெளியே விடுங்கள்', s4btn: 'அடுத்து',
-    s5: 'அனுப்பாதீர்கள்.', s5say: 'சொல்ல நினைப்பதை எல்லாம் இங்கே எழுதுங்கள். யாரும் பார்க்க மாட்டார்கள். இது இந்தக் கைபேசியை விட்டு வெளியே போகாது.',
-    padPh: 'எல்லாவற்றையும் இங்கே சொல்லுங்கள்…', s5lock: 'பூட்டி வை', s5skip: 'எழுத எதுவும் இல்லை',
-    locked: 'பூட்டப்பட்டது. 20 நிமிடம் கழித்து மீண்டும் படியுங்கள்.',
-    s6: 'இப்போது எவ்வளவு சூடாக இருக்கிறது?', calm: 'அமைதி', boiling: 'கொதிப்பு',
-    hotStill: 'இன்னும் சூடாக இருக்கிறது. பரவாயில்லை. இன்னொரு சுற்று உதவும்.', again: 'இன்னொரு சுற்று',
-    cooler: 'குளிர்ந்திருக்கிறது. அடியில் என்ன இருக்கிறது என்று பார்ப்போம்.', next: 'அடுத்து',
-    s7: 'கோபத்துக்கு அடியில் என்ன?', s7say: 'கோபம் பெரும்பாலும் ஒரு மென்மையான உணர்வைக் காக்கிறது. பொருந்துவதைத் தேர்ந்தெடுங்கள்.',
+    s3btn: 'முடிஞ்சுது. இப்போ மூச்சு',
+    s4: 'வட்டத்தோட சேர்ந்து மூச்சு விடுங்க.', in: 'மூச்சை உள்ள இழுங்க', out: 'மெதுவா… வெளிய விடுங்க', s4btn: 'அடுத்து',
+    s5: 'Send பண்ணாதீங்க.', s5say: 'சொல்லணும்னு தோணுறத எல்லாம் இங்கயே எழுதுங்க. யாரும் பார்க்க மாட்டாங்க. இது உங்க phone-லயே இருக்கும்.',
+    padPh: 'எல்லாத்தையும் இங்க கொட்டிடுங்க…', s5lock: 'பூட்டி வை', s5skip: 'எழுத ஒண்ணும் இல்ல',
+    locked: 'பூட்டியாச்சு. 20 நிமிஷம் கழிச்சு திரும்பப் படிங்க.',
+    s6: 'இப்போ கோபம் எவ்வளவு சூடா இருக்கு?', calm: 'அமைதி', boiling: 'கொதிக்குது',
+    hotStill: 'இன்னும் சூடா இருக்கு. பரவாயில்ல. இன்னொரு round பண்ணலாம்.', again: 'இன்னொரு round',
+    cooler: 'இப்போ கொஞ்சம் குளிர்ந்திருக்கு. அடியில என்ன இருக்குன்னு பார்ப்போம்.', next: 'அடுத்து',
+    s7: 'கோபத்துக்குப் பின்னாடி என்ன?', s7say: 'கோபத்துக்குப் பின்னாடி பெரும்பாலும் ஒரு மென்மையான feeling ஒளிஞ்சிருக்கும். உங்களுக்கு எது உண்மையோ, அதைத் தொடுங்க.',
     feels: ['காயம்', 'அவமதிப்பு', 'புறக்கணிப்பு', 'பயம்', 'அவமானம்', 'களைப்பு', 'அநியாயம்', 'இயலாமை'],
     finish: 'முடி',
-    done: 'கடந்து போனது.', doneSay: 'நெருப்பை உணர்ந்தீர்கள், ஆனால் அதன்படி நடக்கவில்லை. இதுதான் முழுத் திறமையும்.',
-    mins: 'நிமிடங்கள்', breaths: 'மூச்சுகள்', heatNow: 'இப்போதைய சூடு',
-    repairH: 'பேசத் தயாரானதும், இப்படித் தொடங்குங்கள்:',
-    repair: '“நான் முன்பு கோபமாக இருந்தேன். அதைப் பற்றி அமைதியாகப் பேச விரும்புகிறேன்.”',
-    save: 'என் குறிப்பேட்டில் சேமி', saved: 'இந்தக் கைபேசியில் மட்டும் சேமிக்கப்பட்டது.', home: 'முகப்புக்குத் திரும்பு',
-    timerDone: '20 நிமிடம் முடிந்தது. இப்போது சூடு எவ்வளவு என்று பாருங்கள்.',
+    done: 'கடந்து போயிடுச்சு.', doneSay: 'நெருப்பை உணர்ந்தீங்க… ஆனா அதுபடி நடந்துக்கல. இதுதான் முழு skill-உம்.',
+    mins: 'நிமிஷம்', breaths: 'மூச்சு', heatNow: 'இப்போதைய சூடு',
+    repairH: 'பேசத் தயாரானதும், simple-ஆ இப்படி ஆரம்பிங்க:',
+    repair: '“முன்னாடி எனக்கு கோபம் வந்துச்சு. அதப் பத்தி அமைதியா பேசணும்.”',
+    save: 'என் குறிப்பேட்டுல சேமி', saved: 'இந்த phone-ல மட்டும் சேமிச்சாச்சு.', home: 'முகப்புக்குப் போ',
+    timerDone: 'இருபது நிமிஷம் ஆச்சு. இப்போ சூடு எவ்வளவுன்னு பாருங்க.',
     voiceOff: 'இந்தக் கைபேசியில் தமிழ்க் குரல் இல்லை.'
   }
 };
@@ -425,7 +425,8 @@ function scene(step) {
   const kick = n <= 6 ? `<p class="kick">${x.stepOf(n)}</p>` : '';
   switch (step) {
     case 'stop': return `${kick}<h2 id="sos-title">${x.s1}</h2><p class="say">${x.s1say}</p>
-      <button class="hold" id="hold"><span class="fill" aria-hidden="true"></span><span class="lbl">${x.hold}</span></button>`;
+      <button class="hold" id="hold"><span class="fill" aria-hidden="true"></span><span class="lbl">${x.hold}</span></button>
+      <div class="voice-row"><button class="chip voice-chip" data-act="voice" aria-pressed="${S.voice}">${ICONS.voice}<span>${x.voiceOn}</span></button><span class="voice-hint">${x.voiceHint}</span></div>`;
     case 'away': return `${kick}<h2 id="sos-title">${x.s2}</h2><p class="say">${x.s2say}</p><blockquote>${x.exitLine}</blockquote>
       <div class="actions"><button class="btn btn-ghost" data-act="go" data-to="body">${x.s2btn}</button></div>`;
     case 'body': return `${kick}<h2 id="sos-title">${x.s3}</h2><p class="say">${x.s3say}</p>
@@ -499,6 +500,8 @@ function voice(id, fallback) {
   c.a.play().then(() => { c.ok = true; }).catch(() => { c.ok = false; });
 }
 function stopVoice() { playing?.pause(); }
+const VOICE_IDS = ['stop', 'away', 'body', 'breathe', 'in', 'out', 'write', 'check', 'hot', 'cooler', 'under', 'done', 'timer'];
+function preloadVoice() { VOICE_IDS.forEach(clip); }
 function speakScene(step) {
   const x = t();
   const map = { stop: `${x.s1} ${x.s1say}`, away: `${x.s2} ${x.s2say} ${x.exitLine}`, body: `${x.s3} ${x.s3say}`, breathe: x.s4, write: `${x.s5} ${x.s5say}`, check: x.s6, under: `${x.s7} ${x.s7say}`, done: `${x.done} ${x.doneSay}` };
@@ -606,6 +609,7 @@ function openSos() {
   document.body.setAttribute('data-sos', '');
   sos.hidden = false;
   Embers.snap(0);
+  if (S.voice) preloadVoice();
   go('stop', { instant: true });
   requestAnimationFrame(() => requestAnimationFrame(() => sos.setAttribute('data-open', '')));
   clearInterval(timerInt); timerInt = setInterval(tickTimer, 1000);
@@ -645,7 +649,9 @@ document.addEventListener('click', (e) => {
   const act = a.dataset.act;
   if (act === 'close') { closeSos(); }
   else if (act === 'voice') {
-    S.voice = !S.voice; store.set('amaidhi-voice', S.voice); a.setAttribute('aria-pressed', S.voice);
+    S.voice = !S.voice; store.set('amaidhi-voice', S.voice);
+    document.querySelectorAll('[data-act="voice"]').forEach((b) => b.setAttribute('aria-pressed', S.voice));
+    if (S.voice) preloadVoice();
     if (S.voice) speakScene(S.step); else { stopVoice(); }
   }
   else if (act === 'go') {

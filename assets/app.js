@@ -57,11 +57,16 @@ const T = {
     s2: 'Step away.', s2say: 'Leave the room, or turn away from the screen. Say this, calmly:',
     exitLine: '“I need ten minutes. I will come back.”', s2btn: "I've stepped away",
     s3: 'Cool your body.', s3say: 'Anger is heat in the body. Pick one and do it now.',
-    tools: [
-      ['drop', 'Cold water', 'Splash cold water on your face, or hold something cold for 30 seconds.'],
-      ['fist', 'Squeeze and let go', 'Make tight fists for five seconds. Let go. Feel the difference. Three times.'],
-      ['walk', 'Walk it off', 'Walk fast for two minutes. Let your body burn the energy.']
-    ],
+    tools: {
+      drop: ['Cold water', 'Splash cold water on your face, or hold something cold for 30 seconds.', 'drop'],
+      fist: ['Squeeze and let go', 'Make tight fists for five seconds. Let go. Feel the difference. Three times.', 'fist'],
+      walk: ['Walk it off', 'Walk fast for two minutes. Let your body burn the energy.', 'walk'],
+      breath: ['Long out-breath', 'Breathe in for 4, out for 6. Five times.', 'wind'],
+      word: ['Your calm word', 'Breathe out slowly and say “அமைதி” in your head. Again, and again.', 'leaf'],
+      outside: ['Step outside', 'Go out and look at the sky or a tree for one minute. Name five things you can see.', 'sun']
+    },
+    yourReason: 'Your reason', yourSigns: 'You noticed the signs:', yourCard: 'Your card', yourN: (n) => `Your ${n}:`, openPlan: 'Open my plan',
+    navWorkbook: 'Workbook', startWorkbook: 'Start the workbook', free: 'Free · start any time',
     s3btn: 'Done. Now breathe',
     s4: 'Breathe with the circle.', in: 'Breathe in', out: 'Breathe out, slowly', s4btn: 'Next',
     s5: "Don't send it.", s5say: 'Write everything you want to say here instead. Nobody will see it. It never leaves this phone.',
@@ -132,11 +137,16 @@ const T = {
     s2: 'விலகிப் போங்க.', s2say: 'Room-ஐ விட்டு வெளிய போங்க, இல்லன்னா திரும்பி நில்லுங்க. அமைதியா இப்படிச் சொல்லுங்க:',
     exitLine: '“எனக்கு ஒரு பத்து நிமிஷம் வேணும். திரும்பி வர்றேன்.”', s2btn: 'விலகி வந்துட்டேன்',
     s3: 'உடம்பைக் குளிர வையுங்க.', s3say: 'கோபம்னா உடம்புக்குள்ள ஏறுற சூடு. ஏதாவது ஒண்ணு, இப்பவே பண்ணுங்க.',
-    tools: [
-      ['drop', 'ஜில்லுன்னு தண்ணி', 'முகத்துல ஜில்லுன்னு தண்ணி அடிங்க. இல்லன்னா ஜில்லுன்னு ஏதாவது ஒண்ண 30 second கையில புடிச்சுக்குங்க.'],
-      ['fist', 'இறுக்கி, விடுங்க', 'அஞ்சு second கைய இறுக்கமா மடக்குங்க. அப்புறம் விட்டுடுங்க. வித்தியாசத்த feel பண்ணுங்க. மூணு தடவை.'],
-      ['walk', 'வேகமா நடங்க', 'ரெண்டு நிமிஷம் வேகமா நடங்க. அந்த energy-ய உடம்பு எரிச்சுடட்டும்.']
-    ],
+    tools: {
+      drop: ['ஜில்லுன்னு தண்ணி', 'முகத்துல ஜில்லுன்னு தண்ணி அடிங்க. இல்லன்னா ஜில்லுன்னு ஏதாவது ஒண்ண 30 second கையில புடிச்சுக்குங்க.', 'drop'],
+      fist: ['இறுக்கி, விடுங்க', 'அஞ்சு second கைய இறுக்கமா மடக்குங்க. அப்புறம் விட்டுடுங்க. வித்தியாசத்த feel பண்ணுங்க. மூணு தடவை.', 'fist'],
+      walk: ['வேகமா நடங்க', 'ரெண்டு நிமிஷம் வேகமா நடங்க. அந்த energy-ய உடம்பு எரிச்சுடட்டும்.', 'walk'],
+      breath: ['நீளமான வெளிமூச்சு', '4 count உள்ள, 6 count வெளிய. அஞ்சு தடவை.', 'wind'],
+      word: ['அமைதி வார்த்தை', 'மெதுவா மூச்சை விட்டு, மனசுக்குள்ள “அமைதி”ன்னு சொல்லுங்க. திரும்பத் திரும்ப.', 'leaf'],
+      outside: ['வெளிய போங்க', 'வெளிய போய், ஒரு நிமிஷம் வானத்தையோ மரத்தையோ பாருங்க. கண்ணுக்குத் தெரியுற அஞ்சு விஷயத்தோட பேரைச் சொல்லுங்க.', 'sun']
+    },
+    yourReason: 'உங்க காரணம்', yourSigns: 'அறிகுறிகளைக் கவனிச்சீங்க:', yourCard: 'உங்க அட்டை', yourN: (n) => `உங்க ${n}:`, openPlan: 'என் திட்டத்தைத் திற',
+    navWorkbook: 'பயிற்சி', startWorkbook: 'பயிற்சியைத் தொடங்குங்க', free: 'இலவசம் · எப்போ வேணும்னாலும் ஆரம்பிக்கலாம்',
     s3btn: 'முடிஞ்சுது. இப்போ மூச்சு',
     s4: 'வட்டத்தோட சேர்ந்து மூச்சு விடுங்க.', in: 'மூச்சை உள்ள இழுங்க', out: 'மெதுவா… வெளிய விடுங்க', s4btn: 'அடுத்து',
     s5: 'Send பண்ணாதீங்க.', s5say: 'சொல்லணும்னு தோணுறத எல்லாம் இங்கயே எழுதுங்க. யாரும் பார்க்க மாட்டாங்க. இது உங்க phone-லயே இருக்கும்.',
@@ -189,7 +199,11 @@ const ICONS = {
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
   drop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
   fist: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V8a2 2 0 0 1 4 0v3M11 10V7a2 2 0 0 1 4 0v4M15 10a2 2 0 0 1 4 0v3a7 7 0 0 1-7 7h-1a6 6 0 0 1-6-6v-2a2 2 0 0 1 2-2h3"/></svg>',
-  walk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M9 21l2-6 3 3v3M7 12l3-4 4 1 2 4 3 1M10 8l-1 5"/></svg>'
+  walk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="M9 21l2-6 3 3v3M7 12l3-4 4 1 2 4 3 1M10 8l-1 5"/></svg>',
+  wind: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h11a3 3 0 1 0-3-3M3 16h15a3 3 0 1 1-3 3M3 12h17"/></svg>',
+  leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15"/><path d="M5 19l7-7"/></svg>',
+  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>'
 };
 
 function preload(src) {
@@ -275,7 +289,8 @@ function renderTop() {
       <button data-lang="en" aria-pressed="${lang === 'en'}">EN</button>
       <button data-lang="ta" aria-pressed="${lang === 'ta'}" lang="ta">தமிழ்</button>
     </div>
-    <a class="qexit" href="${QUICK_EXIT_URL}" rel="noreferrer" target="_blank" data-qexit>${ICONS.exit}${t().exit}</a>`;
+    <a class="navlink" href="#workbook">${ICONS.book}<span>${t().navWorkbook}</span></a>
+    <a class="qexit" href="${QUICK_EXIT_URL}" rel="noreferrer" target="_blank" data-qexit title="${esc(t().exit)}">${t().exit}</a>`;
 }
 
 function renderHome(intro) {
@@ -333,12 +348,12 @@ function renderHome(intro) {
 
   <section class="section" id="weeks">
     <div class="wrap weeks-grid">
-      <div class="head"><p class="kicker">${x.weeksKick}</p><h2 class="h2">${x.weeksTitle}</h2><p class="lede">${x.weeksLede}</p><span class="badge">${x.soon}</span></div>
+      <div class="head"><p class="kicker">${x.weeksKick}</p><h2 class="h2">${x.weeksTitle}</h2><p class="lede">${x.weeksLede}</p><span class="badge">${t().free}</span><a class="btn btn-water" href="#week-0">${t().startWorkbook} →</a></div>
       <ol class="weeks" role="list">
         ${x.weeks.map(([h, adds], k) => `
-          <li class="week reveal"><span class="wn">${k === 0 ? '·' : String(k).padStart(2, '0')}</span>
-            <h3>${k === 0 ? `<span class="sr">${x.startWk}: </span>` : ''}${h}</h3>
-            ${adds ? `<span class="adds">${adds}</span>` : '<span></span>'}</li>`).join('')}
+          <li class="reveal"><a class="week" href="#week-${k}"><span class="wn">${k === 0 ? '·' : String(k).padStart(2, '0')}</span>
+            <h3>${k === 0 ? `<span class="sr">${x.startWk}: </span>` : ''}${window.AMAIDHI_WB ? window.AMAIDHI_WB.weekTitle(k) : h}</h3>
+            ${adds ? `<span class="adds">${adds}</span>` : '<span></span>'}</a></li>`).join('')}
       </ol>
     </div>
   </section>
@@ -392,7 +407,7 @@ function onScroll() {
   if (ticking) return; ticking = true;
   requestAnimationFrame(() => {
     ticking = false;
-    if (document.body.hasAttribute('data-sos')) return;
+    if (document.body.hasAttribute('data-sos') || !$('#wb').hidden) return;
     const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     const k = Math.min(1, scrollY / (max * 0.7));
     document.documentElement.style.setProperty('--cool', k.toFixed(3));
@@ -413,29 +428,32 @@ let timerInt = 0, breathT = 0, holdT = 0, lastFocus = null, photosReady = {};
 function sosTopHtml() {
   const idx = Math.min(6, ORDER.indexOf(S.step) + 1);
   return `
-    <button class="icon-btn" data-act="close" aria-label="${esc(t().sosClose)}">${ICONS.back}</button>
     <div class="dots" aria-hidden="true">${Array.from({ length: 6 }, (_, k) => `<i ${k < idx ? 'data-on' : ''}></i>`).join('')}</div>
     <span class="timer" id="timer" ${S.timerEnd ? '' : 'hidden'}></span>
     <button class="icon-btn" data-act="voice" aria-pressed="${S.voice}" aria-label="${esc(t().voice)}">${ICONS.voice}</button>
-    <a class="icon-btn" href="${QUICK_EXIT_URL}" rel="noreferrer" target="_blank" data-qexit aria-label="${esc(t().exit)}">${ICONS.exit}</a>`;
+    <button class="icon-btn" data-act="close" aria-label="${esc(t().sosClose)}">${ICONS.exit}</button>`;
 }
 
+const kit = () => (window.AMAIDHI_WB ? window.AMAIDHI_WB.sos() : {});
 function scene(step) {
-  const x = t(), n = ORDER.indexOf(step) + 1;
+  const x = t(), n = ORDER.indexOf(step) + 1, K = kit();
   const kick = n <= 6 ? `<p class="kick">${x.stepOf(n)}</p>` : '';
   switch (step) {
     case 'stop': return `${kick}<h2 id="sos-title">${x.s1}</h2><p class="say">${x.s1say}</p>
+      ${K.signs && K.signs.length ? `<p class="mine-signs"><span>${x.yourSigns}</span> ${K.signs.slice(0, 4).map(esc).join(' · ')}</p>` : ''}
+      ${K.reason ? `<div class="mine"><span>${x.yourReason}</span><p>${esc(K.reason)}</p></div>` : ''}
       <button class="hold" id="hold"><span class="fill" aria-hidden="true"></span><span class="lbl">${x.hold}</span></button>
       <div class="voice-row"><button class="chip voice-chip" data-act="voice" aria-pressed="${S.voice}">${ICONS.voice}<span>${x.voiceOn}</span></button><span class="voice-hint">${x.voiceHint}</span></div>`;
-    case 'away': return `${kick}<h2 id="sos-title">${x.s2}</h2><p class="say">${x.s2say}</p><blockquote>${x.exitLine}</blockquote>
+    case 'away': return `${kick}<h2 id="sos-title">${x.s2}</h2><p class="say">${x.s2say}</p><blockquote>${K.exitLine ? `“${esc(K.exitLine)}”` : x.exitLine}</blockquote>
       <div class="actions"><button class="btn btn-ghost" data-act="go" data-to="body">${x.s2btn}</button></div>`;
     case 'body': return `${kick}<h2 id="sos-title">${x.s3}</h2><p class="say">${x.s3say}</p>
-      <div class="cards">${x.tools.map(([ic, h, p]) => `<div class="card"><span class="ic">${ICONS[ic]}</span><h3>${h}</h3><p>${p}</p></div>`).join('')}</div>
+      <div class="cards">${((K.tools && K.tools.length ? K.tools : []).concat(['drop', 'fist', 'walk']).filter((v, i, a) => a.indexOf(v) === i).slice(0, 3)).map((id) => { const [h, p, ic] = x.tools[id]; return `<div class="card"><span class="ic">${ICONS[ic]}</span><h3>${h}</h3><p>${p}</p></div>`; }).join('')}</div>
       <div class="actions"><button class="btn btn-water" data-act="go" data-to="breathe">${x.s3btn}</button></div>`;
     case 'breathe': return `${kick}<h2 id="sos-title" class="sr">${x.s4}</h2>
       <div class="breath"><div class="orb-wrap"><span class="orb-ring"></span><div class="orb" id="orb"></div></div>
       <p class="phase" id="phase" aria-live="polite">${x.s4}</p>
       <div class="count" id="count">${Array.from({ length: 6 }, () => '<i></i>').join('')}</div></div>
+      ${K.coping && K.coping.length ? `<div class="mine later" id="cope"><span>${x.yourCard}</span><p>“${esc(K.coping[Math.floor(Math.random() * K.coping.length)])}”</p></div>` : ''}
       <div class="actions later" id="later"><button class="btn btn-water" data-act="go" data-to="write">${x.s4btn}</button></div>`;
     case 'write': return `${kick}<h2 id="sos-title">${x.s5}</h2><p class="say">${x.s5say}</p>
       <label class="sr" for="pad">${x.padPh}</label><textarea class="pad" id="pad" placeholder="${esc(x.padPh)}"></textarea>
@@ -448,6 +466,7 @@ function scene(step) {
         const v = k + 1; return `<button style="--h:${heatColor(v)};--ht:${34 + v * 6.6}%" data-act="heat" data-v="${v}" ${h && v <= h ? 'data-fill' : ''} aria-pressed="${h === v}">${v}</button>`; }).join('')}</div>
       <div class="therm-scale"><span>${x.calm}</span><span>${x.boiling}</span></div>
       <p class="verdict">${verdict}</p>
+      ${(() => { if (h == null || !K.anchors) return ''; const a = h <= 4 ? 3 : h <= 7 ? 6 : 9; return K.anchors[a] && K.anchors[a].trim() ? `<p class="anchor-note"><b>${x.yourN(a)}</b> ${esc(K.anchors[a])}</p>` : ''; })()}
       <div class="actions">${h == null ? '' : h >= 7
         ? `<button class="btn btn-ember" data-act="again">${x.again}</button>`
         : `<button class="btn btn-water" data-act="go" data-to="under">${x.next}</button>`}</div>`;
@@ -459,8 +478,8 @@ function scene(step) {
       const mins = Math.max(1, Math.round((Date.now() - S.startedAt) / 60000));
       return `<h2 id="sos-title">${x.done}</h2><p class="say">${x.doneSay}</p>
       <div class="stats"><div class="stat"><b>${mins}</b><span>${x.mins}</span></div><div class="stat"><b>${S.breaths}</b><span>${x.breaths}</span></div><div class="stat"><b>${S.heat ?? '–'}</b><span>${x.heatNow}</span></div></div>
-      <p class="say">${x.repairH}</p><blockquote>${x.repair}</blockquote>
-      <div class="actions"><button class="btn btn-water" data-act="save">${x.save}</button><button class="btn btn-ghost" data-act="close">${x.home}</button></div>`;
+      <p class="say">${x.repairH}</p><blockquote>${K.repair ? esc(K.repair) : x.repair}</blockquote>
+      <div class="actions"><button class="btn btn-water" data-act="save">${x.save}</button>${K.hasPlan ? `<a class="btn btn-ghost" href="#week-8" data-act="toplan">${x.openPlan}</a>` : ''}<button class="btn btn-ghost" data-act="close">${x.home}</button></div>`;
     }
   }
   return '';
@@ -576,7 +595,7 @@ function startBreath() {
       if (!inhale) {
         n++; S.breaths++;
         count.children[Math.min(5, n - 1)]?.setAttribute('data-on', '');
-        if (n >= 3) later.setAttribute('data-show', '');
+        if (n >= 3) { later.setAttribute('data-show', ''); $('#cope')?.setAttribute('data-show', ''); }
       }
       cycle(!inhale);
     }, dur);
@@ -602,6 +621,7 @@ function tickTimer() {
   if (left === 0 && !S.timerToasted) { S.timerToasted = true; toast(t().timerDone); voice('timer', t().timerDone); }
 }
 
+let returnTo = '';
 function openSos() {
   if (!sos.hidden) return;
   lastFocus = document.activeElement;
@@ -620,11 +640,33 @@ function closeSos() {
   stopVoice();
   sos.removeAttribute('data-open');
   setTimeout(() => { sos.hidden = true; stage.innerHTML = ''; document.body.removeAttribute('data-sos'); onScroll(); }, 280);
-  if (location.hash === '#sos') history.replaceState(null, '', location.pathname + location.search);
+  if (location.hash === '#sos') { history.replaceState(null, '', location.pathname + location.search + returnTo); showView(); }
   lastFocus?.focus?.({ preventScroll: true });
 }
 
-function route() { if (location.hash === '#sos') openSos(); else closeSos(); }
+const WB_ROUTE = /^#(workbook|journal|week-[0-8])$/;
+let currentView = null;
+function showView() {
+  const m = location.hash.match(WB_ROUTE);
+  const v = m ? m[1] : null;
+  const wb = $('#wb');
+  if (v && window.AMAIDHI_WB) {
+    $('#home').hidden = true; $('#foot').hidden = true; wb.hidden = false;
+    if (v !== currentView) { window.AMAIDHI_WB.render(v, wb); scrollTo(0, 0); }
+    document.documentElement.style.setProperty('--cool', '0.9'); Embers.set(0.9);
+    $('#top').setAttribute('data-solid', '');
+  } else {
+    wb.hidden = true; wb.innerHTML = ''; $('#home').hidden = false; $('#foot').hidden = false;
+    if (currentView) { scrollTo(0, 0); }
+    onScroll();
+  }
+  currentView = v;
+}
+function route() {
+  if (location.hash === '#sos') { openSos(); return; }
+  if (!sos.hidden) closeSos();
+  showView();
+}
 addEventListener('hashchange', route);
 
 /* ================= events ================= */
@@ -633,15 +675,16 @@ document.addEventListener('click', (e) => {
   const l = e.target.closest('[data-lang]');
   if (l) {
     lang = l.dataset.lang; store.set('amaidhi-lang', lang); document.documentElement.lang = lang;
-    renderTop(); renderHome(false); onScroll();
+    renderTop(); renderHome(false); currentView = null; showView();
     if (!sos.hidden) { sosTop.innerHTML = sosTopHtml(); go(S.step, { instant: true }); }
     return;
   }
   const sosLink = e.target.closest('a[href="#sos"]');
-  if (sosLink) { e.preventDefault(); if (location.hash !== '#sos') location.hash = 'sos'; else openSos(); return; }
+  if (sosLink) { e.preventDefault(); if (location.hash !== '#sos') { returnTo = WB_ROUTE.test(location.hash) ? location.hash : ''; location.hash = 'sos'; } else openSos(); return; }
+  if (e.target.closest('[data-act="toplan"]')) { e.preventDefault(); returnTo = '#week-8'; closeSos(); setTimeout(() => document.querySelector('#plan')?.scrollIntoView({ behavior: 'smooth' }), 400); return; }
   if (e.target.closest('#erase')) {
     const b = $('#erase');
-    if (b.dataset.armed) { ['amaidhi-journal', 'amaidhi-sealed', 'amaidhi-voice'].forEach(store.del); delete b.dataset.armed; b.textContent = t().erase; toast(t().erased); }
+    if (b.dataset.armed) { ['amaidhi-journal', 'amaidhi-sealed', 'amaidhi-voice', 'amaidhi-wb', 'amaidhi-checks', 'amaidhi-log', 'amaidhi-records'].forEach(store.del); currentView = null; showView(); delete b.dataset.armed; b.textContent = t().erase; toast(t().erased); }
     else { b.dataset.armed = '1'; b.textContent = t().eraseSure; setTimeout(() => { if (b.isConnected) { delete b.dataset.armed; b.textContent = t().erase; } }, 4000); }
     return;
   }
@@ -680,11 +723,15 @@ document.addEventListener('click', (e) => {
 });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sos.hidden) closeSos(); });
 
+/* ================= shared with workbook.js ================= */
+window.AMAIDHI = { lang: () => lang, t, T, store, toast, esc, heatColor, ICONS, observeReveals };
+
 /* ================= boot ================= */
 document.documentElement.lang = lang;
 renderTop();
 renderHome(true);
 onScroll();
+showView();
 Object.entries(PHOTO).forEach(([, k]) => {
   if (!k || photosReady[k] !== undefined) return;
   photosReady[k] = false;

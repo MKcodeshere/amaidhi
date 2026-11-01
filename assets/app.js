@@ -489,10 +489,34 @@ function speak(text) {
     speechSynthesis.speak(u);
   } catch (e) {}
 }
+/* Recorded voice: assets/audio/<en|ta>/<id>.mp3. Falls back to the phone's own voice if a clip is missing. */
+const clips = {};
+let playing = null;
+function clip(id) {
+  const key = `${lang}/${id}`;
+  if (!clips[key]) {
+    const a = new Audio(`assets/audio/${key}.mp3`);
+    a.preload = 'auto';
+    clips[key] = { a, ok: null };
+    a.addEventListener('error', () => { clips[key].ok = false; }, { once: true });
+  }
+  return clips[key];
+}
+function voice(id, fallback) {
+  if (!S.voice) return;
+  const c = clip(id);
+  try { speechSynthesis.cancel(); } catch (e) {}
+  if (playing && playing !== c.a) playing.pause();
+  if (c.ok === false) { speak(fallback); return; }
+  playing = c.a;
+  try { c.a.currentTime = 0; } catch (e) {}
+  c.a.play().then(() => { c.ok = true; }).catch(() => { c.ok = false; speak(fallback); });
+}
+function stopVoice() { try { speechSynthesis.cancel(); } catch (e) {} playing?.pause(); }
 function speakScene(step) {
   const x = t();
-  const map = { stop: `${x.s1} ${x.s1say}`, away: `${x.s2} ${x.s2say} ${x.exitLine}`, body: `${x.s3} ${x.s3say}`, write: `${x.s5} ${x.s5say}`, check: x.s6, under: `${x.s7} ${x.s7say}`, done: `${x.done} ${x.doneSay}` };
-  if (map[step]) speak(map[step]);
+  const map = { stop: `${x.s1} ${x.s1say}`, away: `${x.s2} ${x.s2say} ${x.exitLine}`, body: `${x.s3} ${x.s3say}`, breathe: x.s4, write: `${x.s5} ${x.s5say}`, check: x.s6, under: `${x.s7} ${x.s7say}`, done: `${x.done} ${x.doneSay}` };
+  if (map[step]) voice(step, map[step]);
 }
 
 function animateIn(nodes) {
@@ -517,9 +541,9 @@ async function go(step, { instant = false } = {}) {
   setAtmosphere(step);
   animateIn([...stage.firstElementChild.children]);
   stage.scrollTop = 0;
+  if (!(step === 'check' && S.heat != null)) speakScene(step);
   if (step === 'stop') wireHold();
   if (step === 'breathe') startBreath();
-  speakScene(step);
   const focusable = stage.querySelector('h2');
   if (focusable) { focusable.setAttribute('tabindex', '-1'); focusable.focus({ preventScroll: true }); }
   swapping = false;
@@ -553,7 +577,11 @@ function startBreath() {
     const dur = inhale ? 4000 : 6000;
     orb.style.transition = `transform ${dur}ms cubic-bezier(0.37, 0, 0.63, 1)`;
     orb.style.transform = inhale ? 'scale(1)' : 'scale(0.55)';
-    say(inhale ? t().in : t().out); speak(inhale ? t().in : t().out);
+    say(inhale ? t().in : t().out); if (n > 0 || !inhale) voice(inhale ? 'in' : 'out', inhale ? t().in : t().out);
+    if (inhale) { // the ripple video is built as 4s inward + 6s outward: restart it on every inhale so water and circle breathe together
+      const bv = sos.querySelector('video.photo[data-on]');
+      if (bv) { try { bv.currentTime = 0; bv.play().catch(() => {}); } catch (err) {} }
+    }
     navigator.vibrate?.(inhale ? 18 : 10);
     breathT = setTimeout(() => {
       if (!inhale) {
@@ -564,7 +592,16 @@ function startBreath() {
       cycle(!inhale);
     }, dur);
   };
-  breathT = setTimeout(() => cycle(true), 700);
+  // With voice on, start the circle when the spoken intro ends (recorded clip), or after a fixed pause (phone voice).
+  let started = false;
+  const begin = () => { if (started || !orb.isConnected) return; started = true; clearTimeout(breathT); cycle(true); };
+  const intro = clips[`${lang}/breathe`];
+  if (S.voice && intro && intro.ok !== false && !intro.a.paused) {
+    intro.a.addEventListener('ended', () => setTimeout(begin, 400), { once: true });
+    intro.a.addEventListener('error', () => { clearTimeout(breathT); breathT = setTimeout(begin, 5200); }, { once: true });
+    breathT = setTimeout(begin, 12000);
+  }
+  else breathT = setTimeout(begin, S.voice ? 5200 : 700);
 }
 function stopBreath() { clearTimeout(breathT); }
 
@@ -573,7 +610,7 @@ function tickTimer() {
   const left = Math.max(0, S.timerEnd - Date.now());
   const m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
   el.textContent = `${m}:${String(s).padStart(2, '0')}`;
-  if (left === 0 && !S.timerToasted) { S.timerToasted = true; toast(t().timerDone); }
+  if (left === 0 && !S.timerToasted) { S.timerToasted = true; toast(t().timerDone); voice('timer', t().timerDone); }
 }
 
 function openSos() {
@@ -590,7 +627,7 @@ function openSos() {
 function closeSos() {
   if (sos.hidden) return;
   stopBreath(); clearTimeout(holdT); clearInterval(timerInt);
-  try { speechSynthesis.cancel(); } catch (e) {}
+  stopVoice();
   sos.removeAttribute('data-open');
   setTimeout(() => { sos.hidden = true; stage.innerHTML = ''; document.body.removeAttribute('data-sos'); onScroll(); }, 280);
   if (location.hash === '#sos') history.replaceState(null, '', location.pathname + location.search);
@@ -623,10 +660,7 @@ document.addEventListener('click', (e) => {
   if (act === 'close') { closeSos(); }
   else if (act === 'voice') {
     S.voice = !S.voice; store.set('amaidhi-voice', S.voice); a.setAttribute('aria-pressed', S.voice);
-    if (S.voice) {
-      const has = ('speechSynthesis' in window) && speechSynthesis.getVoices().some((v) => v.lang?.toLowerCase().startsWith(lang === 'ta' ? 'ta' : 'en'));
-      if (!has && lang === 'ta') toast(t().voiceOff); else speakScene(S.step);
-    } else { try { speechSynthesis.cancel(); } catch (err) {} }
+    if (S.voice) speakScene(S.step); else { stopVoice(); }
   }
   else if (act === 'go') {
     if (a.dataset.to === 'body' && !S.timerEnd) { S.timerEnd = Date.now() + 20 * 60000; }
@@ -639,7 +673,7 @@ document.addEventListener('click', (e) => {
       pad.setAttribute('data-sealed', ''); toast(t().locked); setTimeout(() => go('check'), 520);
     } else go('check');
   }
-  else if (act === 'heat') { S.heat = +a.dataset.v; go('check', { instant: true }); }
+  else if (act === 'heat') { S.heat = +a.dataset.v; go('check', { instant: true }).then(() => voice(S.heat >= 7 ? 'hot' : 'cooler', S.heat >= 7 ? t().hotStill : t().cooler)); }
   else if (act === 'again') { S.rounds++; S.heat = null; go('body'); }
   else if (act === 'feel') {
     const k = +a.dataset.v; S.feels = S.feels.includes(k) ? S.feels.filter((f) => f !== k) : [...S.feels, k];

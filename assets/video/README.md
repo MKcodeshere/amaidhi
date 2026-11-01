@@ -1,6 +1,4 @@
-Drop the two 6-second videos here:
+- `hero.mp4`: 16:9, 6 s, plays once behind the home headline (embers cooling into mist) and holds on its last frame.
+- `breathe.mp4`: 9:16, 10 s. Built from the 6 s ripple clip: first 4 s reversed (rings draw in, "breathe in"), then 6 s forward (rings spread, "breathe out"). The SOS breathing step restarts it on every inhale so the water and the circle stay in sync.
 
-- `hero.mp4`: 16:9, plays once behind the home page headline (embers cooling into water), then holds on its last frame.
-- `breathe.mp4`: 9:16, seamless loop behind the SOS breathing circle.
-
-The site detects them automatically. Until they exist, the still images in `assets/img/` are shown.
+Both are silent H.264 with faststart for quick mobile playback. Generated with Grok.

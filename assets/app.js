@@ -566,7 +566,7 @@ function startBreath() {
     const dur = inhale ? 4000 : 6000;
     orb.style.transition = `transform ${dur}ms cubic-bezier(0.37, 0, 0.63, 1)`;
     orb.style.transform = inhale ? 'scale(1)' : 'scale(0.55)';
-    say(inhale ? t().in : t().out); if (n > 0 || !inhale) voice(inhale ? 'in' : 'out', inhale ? t().in : t().out);
+    say(inhale ? t().in : t().out); voice(inhale ? 'in' : 'out', inhale ? t().in : t().out);
     if (inhale) { // the ripple video is built as 4s inward + 6s outward: restart it on every inhale so water and circle breathe together
       const bv = sos.querySelector('video.photo[data-on]');
       if (bv) { try { bv.currentTime = 0; bv.play().catch(() => {}); } catch (err) {} }
